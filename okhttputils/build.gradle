@@ -25,9 +25,9 @@ android {
         warning 'InvalidPackage'
     }
 
-    publishing {
-        singleVariant('release')
-    }
+//    publishing {
+//        singleVariant('release')
+//    }
 }
 
 task clearJar(type: Delete) {
@@ -43,44 +43,44 @@ task makeJar(type: Copy) {
 
 makeJar.dependsOn(clearJar, build)
 
-afterEvaluate {
-    publishing {
-        publications {
-            release(MavenPublication) {
-                from components.release
-
-                groupId = 'com.zhy'
-                artifactId = 'okhttputils'
-                version = "$project.android.defaultConfig.versionName"
-
-                pom {
-                    name = 'okhttputils'
-                    description = 'Oh hi, this is a nice description for a project, right?'
-                    url = 'https://github.com/hongyangAndroid/okhttputils'
-                    packaging = 'aar'
-                    licenses {
-                        license {
-                            name = 'Apache License, Version 2.0'
-                            url = 'http://www.apache.org/licenses/LICENSE-2.0'
-                            distribution = 'repo'
-                        }
-                    }
-                    developers {
-                        developer {
-                            id = 'hongyangandroid'
-                            name = 'Hongyang Android'
-                        }
-                    }
-                    scm {
-                        connection = 'scm:hg:https://github.com/hongyangAndroid/okhttputils'
-                        developerConnection = 'scm:hg:https://github.com/hongyangAndroid/okhttputils'
-                        url = 'https://github.com/hongyangAndroid/okhttputils'
-                    }
-                }
-            }
-        }
-    }
-}
+//afterEvaluate {
+//    publishing {
+//        publications {
+//            release(MavenPublication) {
+//                from components.release
+//
+//                groupId = 'com.zhy'
+//                artifactId = 'okhttputils'
+//                version = "$project.android.defaultConfig.versionName"
+//
+//                pom {
+//                    name = 'okhttputils'
+//                    description = 'Oh hi, this is a nice description for a project, right?'
+//                    url = 'https://github.com/hongyangAndroid/okhttputils'
+//                    packaging = 'aar'
+//                    licenses {
+//                        license {
+//                            name = 'Apache License, Version 2.0'
+//                            url = 'http://www.apache.org/licenses/LICENSE-2.0'
+//                            distribution = 'repo'
+//                        }
+//                    }
+//                    developers {
+//                        developer {
+//                            id = 'hongyangandroid'
+//                            name = 'Hongyang Android'
+//                        }
+//                    }
+//                    scm {
+//                        connection = 'scm:hg:https://github.com/hongyangAndroid/okhttputils'
+//                        developerConnection = 'scm:hg:https://github.com/hongyangAndroid/okhttputils'
+//                        url = 'https://github.com/hongyangAndroid/okhttputils'
+//                    }
+//                }
+//            }
+//        }
+//    }
+//}
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
